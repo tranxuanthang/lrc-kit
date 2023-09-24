@@ -4,7 +4,14 @@
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "lib"
+    "outDir": "lib",
+    "downlevelIteration": true,
+    "target": "es6",
+    "lib": [
+      "es2019",
+      "dom",
+      "dom.iterable"
+    ]
   },
   "include": ["src"]
 }

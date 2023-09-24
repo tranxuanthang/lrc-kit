@@ -20,7 +20,7 @@ export class Runner {
     if (this.offset) {
       this._offsetAlign();
     }
-    this._sort();
+    // this._sort();
   }
 
   _offsetAlign() {
@@ -43,7 +43,7 @@ export class Runner {
     } else if (this._currentIndex < -1) {
       this._currentIndex = -1;
     }
-    this._currentIndex = this._findIndex(timestamp, this._currentIndex);
+    this._currentIndex = this._findIndex2(timestamp);
   }
 
   _findIndex(timestamp: number, startIndex: number): number {
@@ -70,6 +70,26 @@ export class Runner {
     } else {
       return startIndex;
     }
+  }
+
+  _findIndex2(timestamp: number): number {
+    let currentIndex = -1;
+    let largestTimestamp = -1.0;
+
+    for (const [key, line] of this.lrc.lyrics.entries()) {
+      if (line.timestamp <= largestTimestamp) {
+        break;
+      }
+      if (line.timestamp <= timestamp) {
+        currentIndex = key;
+        largestTimestamp = line.timestamp
+      }
+      if (line.timestamp > timestamp) {
+        break;
+      }
+    }
+
+    return currentIndex;
   }
 
   getInfo() {
