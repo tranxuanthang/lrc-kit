@@ -13,8 +13,7 @@
     "build:esm": "tsc --module es2015 --target es5 --outDir lib/esm",
     "build:cjs": "tsc --module commonjs --target es5 --outDir lib/cjs",
     "clean": "rm -rf lib",
-    "test": "jest",
-    "prepare": "yarn clean && yarn build"
+    "test": "jest"
   },
   "files": [
     "lib",
